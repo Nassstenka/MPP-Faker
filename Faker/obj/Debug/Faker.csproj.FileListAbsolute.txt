@@ -1,0 +1,7 @@
+E:\BSUIR\SPP\Lab2\Faker\bin\Debug\Faker.exe.config
+E:\BSUIR\SPP\Lab2\Faker\bin\Debug\Faker.exe
+E:\BSUIR\SPP\Lab2\Faker\bin\Debug\Faker.pdb
+E:\BSUIR\SPP\Lab2\Faker\obj\Debug\Faker.csprojAssemblyReference.cache
+E:\BSUIR\SPP\Lab2\Faker\obj\Debug\Faker.csproj.CoreCompileInputs.cache
+E:\BSUIR\SPP\Lab2\Faker\obj\Debug\Faker.exe
+E:\BSUIR\SPP\Lab2\Faker\obj\Debug\Faker.pdb
