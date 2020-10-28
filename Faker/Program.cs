@@ -10,18 +10,24 @@ namespace Faker
     {
         class A
         {
-            public int flex;
-            public string name { get; set; }
-            public double age;
-            public A(double dage)
-            {
-                age = dage;
-            }
+            public B b;
+        }
+        class B
+        {
+            public A a;
         }
         public static void Main(string[] args)
         {
             Faker faker = new Faker();
-            Console.WriteLine(faker.Create<string>());
+            object result = faker.Create<A>();
+            if (result != null)
+            {
+                Console.WriteLine(result);
+            }
+            else
+            {
+                Console.WriteLine("NULL.");
+            }
             Console.ReadLine();
         }
     }

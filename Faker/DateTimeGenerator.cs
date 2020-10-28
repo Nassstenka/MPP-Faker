@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Faker
 {
-    class DateTimeGenerator
+    class DateTimeGenerator : IDTOGenerator
     {
         public Type generatedType { get; private set; }
         public Random random { get; private set; }

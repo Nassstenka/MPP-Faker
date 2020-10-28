@@ -98,10 +98,17 @@ namespace Faker
         }
         private object Create(Type type)
         {
+            if (circleStack.Count >= 10)
+            {
+                Console.WriteLine("Circle dependency!");
+                return null;
+            }
+            circleStack.Push(type);
             if (generatorDictionary.TryGetValue(type, out IDTOGenerator generator))
             {
                 if (generator != null)
                 {
+                    circleStack.Pop();
                     return generator.Generate();
                 }
             }
@@ -110,8 +117,10 @@ namespace Faker
                 object result = CreateWithConstructor(type);
                 result = FillFields(result);
                 result = FillProperties(result);
+                circleStack.Pop();
                 return result;
             }
+            
             return null;
         }
             
