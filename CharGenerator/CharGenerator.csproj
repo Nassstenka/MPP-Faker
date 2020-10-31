@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{26A3DBB9-A00B-4F96-8C31-E89AF8178D7D}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Faker</RootNamespace>
-    <AssemblyName>Faker</AssemblyName>
+    <ProjectGuid>{B4835377-0A6C-4F6B-A5C1-42A3AFCA4A62}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CharGenerator</RootNamespace>
+    <AssemblyName>CharGenerator</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -22,7 +22,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,27 +31,21 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BoolGenerator.cs" />
-    <Compile Include="DateTimeGenerator.cs" />
-    <Compile Include="DoubleGenerator.cs" />
-    <Compile Include="Faker.cs" />
-    <Compile Include="FloatGenerator.cs" />
-    <Compile Include="IDTOGenerator.cs" />
-    <Compile Include="IFaker.cs" />
-    <Compile Include="IListGenerator.cs" />
-    <Compile Include="IntGenerator.cs" />
-    <Compile Include="ListGenerator.cs" />
-    <Compile Include="LongGenerator.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="CharGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="System" />
+    <ProjectReference Include="..\Faker\Faker.csproj">
+      <Project>{26a3dbb9-a00b-4f96-8c31-e89af8178d7d}</Project>
+      <Name>Faker</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

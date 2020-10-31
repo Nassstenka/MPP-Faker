@@ -10,7 +10,13 @@ namespace Faker
     {
         class A
         {
-            public B b;
+            public int i;
+            public string j;
+            public bool c;
+            public override string ToString()
+            {
+                return $"int i = {i}, string j = {j}, bool c = {c}";
+            }
         }
         class B
         {
@@ -19,15 +25,18 @@ namespace Faker
         public static void Main(string[] args)
         {
             Faker faker = new Faker();
-            object result = faker.Create<A>();
+            A obj = faker.Create<A>();
+            Console.WriteLine(obj);
+            /*List<int> result = faker.Create<List<int>>();
             if (result != null)
             {
-                Console.WriteLine(result);
+                foreach(int i in result)
+                    Console.WriteLine(i);
             }
             else
             {
                 Console.WriteLine("NULL.");
-            }
+            }*/
             Console.ReadLine();
         }
     }

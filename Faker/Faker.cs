@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Faker
 {
-    class Faker
+    public class Faker
     {
         public Random random = new Random();
         public Dictionary<Type, IDTOGenerator> generatorDictionary;
@@ -41,7 +41,7 @@ namespace Faker
         }
         public void LoadPlugins()
         {
-            const string plugDir = "plugins\\";
+            const string plugDir = "E:\\BSUIR\\SPP\\Lab2\\Faker\\bin\\Debug\\plugins";
             foreach( string path in Directory.GetFiles(plugDir, "*.dll"))
             {
                 Assembly assembly = Assembly.LoadFile(new FileInfo(path).FullName);
@@ -96,7 +96,7 @@ namespace Faker
         {
             return (T)Create(typeof(T));
         }
-        private object Create(Type type)
+        public object Create(Type type)
         {
             if (circleStack.Count >= 10)
             {
@@ -112,6 +112,12 @@ namespace Faker
                     return generator.Generate();
                 }
             }
+            if (type.IsGenericType)
+            {
+                ListGenerator listGenerator = new ListGenerator(random);
+                object result = listGenerator.Generate(type.GetGenericArguments()[0]);
+                return CastList(type.GetGenericArguments()[0], result);
+            }
             if (type.IsClass)
             {
                 object result = CreateWithConstructor(type);
@@ -120,9 +126,20 @@ namespace Faker
                 circleStack.Pop();
                 return result;
             }
-            
             return null;
         }
-            
+
+        private object CastList(Type type, object obj)
+        {
+            Type newListType = typeof(List<>).MakeGenericType(new Type[] { type });
+            IList list = (IList)Activator.CreateInstance(newListType);
+            foreach (object elem in (List<object>)obj)
+            {
+                list.Add(Convert.ChangeType(elem, type));
+            }
+            return list;
+        }
     }
 }
+
+
